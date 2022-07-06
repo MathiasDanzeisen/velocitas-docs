@@ -33,11 +33,11 @@ Interface technology and programming languages …">
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/velocitas-docs/docs/concepts/val/vehicle_service/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2022-05-09T14:24:56+05:30" />
-<meta property="article:modified_time" content="2022-07-06T12:28:55+02:00" />
+<meta property="article:modified_time" content="2022-07-06T13:40:27+00:00" />
 
 <meta itemprop="name" content="Vehicle Service">
 <meta itemprop="description" content="How to create a vehicle service  Motivation Overview Define a service interface  Semantic model Interface technology and programming languages Interface guideline Error codes   Implement a vehicle service  Examples Responsibility Connection status   Add Dapr support to the vehicle service  Metadata Connection status with Dapr   Interaction with the vehicle data broker (optional) Next steps  Vehicle Apps SDK documentation Vehicle App development      How to create a vehicle service Motivation Vehicle services abstract complex behavior of the vehicle."><meta itemprop="datePublished" content="2022-05-09T14:24:56+05:30" />
-<meta itemprop="dateModified" content="2022-07-06T12:28:55+02:00" />
+<meta itemprop="dateModified" content="2022-07-06T13:40:27+00:00" />
 <meta itemprop="wordCount" content="1030">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Vehicle Service"/>
@@ -46,8 +46,8 @@ Interface technology and programming languages …">
 
 
 
-<link rel="preload" href="/velocitas-docs/scss/main.min.1787fbd823742349458dc810c75b4ea9377ed7cae21c8fc39a9834bf5417cab5.css" as="style">
-<link href="/velocitas-docs/scss/main.min.1787fbd823742349458dc810c75b4ea9377ed7cae21c8fc39a9834bf5417cab5.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/velocitas-docs/scss/main.min.0fb0d66c8e96bd88e31a63e1907699e26bc0f292be6342209b6642b2a6e7b2b7.css" as="style">
+<link href="/velocitas-docs/scss/main.min.0fb0d66c8e96bd88e31a63e1907699e26bc0f292be6342209b6642b2a6e7b2b7.css" rel="stylesheet" integrity="">
 
 <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -126,7 +126,7 @@ if (!doNotTrack) {
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/velocitas-docs/offline-search-index.f4364463bccdce1898306526be46e0c5.json"
+  data-offline-search-index-json-src="/velocitas-docs/offline-search-index.3cd1f379e74cef0978b3b84141513785.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -149,7 +149,7 @@ if (!doNotTrack) {
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/velocitas-docs/offline-search-index.f4364463bccdce1898306526be46e0c5.json"
+  data-offline-search-index-json-src="/velocitas-docs/offline-search-index.3cd1f379e74cef0978b3b84141513785.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -274,9 +274,9 @@ if (!doNotTrack) {
           <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
             
 <div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
-<a href="https://github.com/eclipse-velocitas/velocitas-docs/tree/main/content/en/docs/Concepts/val/vehicle_service.md" class="td-page-meta--view" target="_blank" rel="noopener"><i class="fa fa-file-alt fa-fw"></i> View page source</a>
-  <a href="https://github.com/eclipse-velocitas/velocitas-docs/edit/main/content/en/docs/Concepts/val/vehicle_service.md" class="td-page-meta--edit" target="_blank" rel="noopener"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-  <a href="https://github.com/eclipse-velocitas/velocitas-docs/new/main/content/en/docs/Concepts/val/vehicle_service.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child" target="_blank" rel="noopener"><i class="fa fa-edit fa-fw"></i> Create child page</a>
+<a href="https://github.com/eclipse-velocitas/velocitas-docs/tree/main/content/en/docs/concepts/val/vehicle_service.md" class="td-page-meta--view" target="_blank" rel="noopener"><i class="fa fa-file-alt fa-fw"></i> View page source</a>
+  <a href="https://github.com/eclipse-velocitas/velocitas-docs/edit/main/content/en/docs/concepts/val/vehicle_service.md" class="td-page-meta--edit" target="_blank" rel="noopener"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+  <a href="https://github.com/eclipse-velocitas/velocitas-docs/new/main/content/en/docs/concepts/val/vehicle_service.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child" target="_blank" rel="noopener"><i class="fa fa-edit fa-fw"></i> Create child page</a>
   <a href="https://github.com/eclipse-velocitas/velocitas-docs/issues/new?title=Vehicle%20Service" class="td-page-meta--issue" target="_blank" rel="noopener"><i class="fas fa-tasks fa-fw"></i> Create documentation issue</a>
   <a href="https://github.com/eclipse-velocitas/issues/new" class="td-page-meta--project-issue" target="_blank" rel="noopener"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
   <a id="print" href="/velocitas-docs/docs/concepts/val/_print/"><i class="fa fa-print fa-fw"></i> Print entire section</a>
@@ -437,23 +437,23 @@ if (!doNotTrack) {
 <ul>
 <li>Define a service interface</li>
 <li>Implement the service</li>
-<li>Add support for <a href="https://dapr.io">Dapr</a> middleware</li>
+<li>Add support for <a href="https://dapr.io" target="_blank" rel="noopener">Dapr</a> middleware</li>
 <li>(optional) Implement simulation</li>
 <li>(optional) Interaction with the vehicle data broker</li>
 </ul>
 <h2 id="define-a-service-interface">Define a service interface</h2>
 <h3 id="semantic-model">Semantic model</h3>
-<p>The service interface of the vehicle service which abstracts the vehicle behavior, should be aligned to the semantic model. The <a href="https://github.com/COVESA/vehicle_service_catalog">VEHICLE SERVICE CATALOG</a> can be used as the semantic model for a service call.</p>
+<p>The service interface of the vehicle service which abstracts the vehicle behavior, should be aligned to the semantic model. The <a href="https://github.com/COVESA/vehicle_service_catalog" target="_blank" rel="noopener">VEHICLE SERVICE CATALOG</a> can be used as the semantic model for a service call.</p>
 <h3 id="interface-technology-and-programming-languages">Interface technology and programming languages</h3>
-<p>The interface technology used for remote procedure calls is <a href="https://grpc.io/">gGRPC</a>. The methods and datatypes are first defined in a *.proto file, which is then used to generate client and server stubs/skeletons in <a href="https://grpc.io/docs/languages/">different languages</a>.</p>
-<p>How to use the interface and generate code can be read e.g., here: <a href="https://grpc.io/docs/languages/cpp/basics/">Basics tutorial for gRPC in C++</a> or <a href="https://grpc.io/docs/languages/python/basics/">Basics tutorial for gRPC in Python</a>.</p>
+<p>The interface technology used for remote procedure calls is <a href="https://grpc.io/" target="_blank" rel="noopener">gGRPC</a>. The methods and datatypes are first defined in a *.proto file, which is then used to generate client and server stubs/skeletons in <a href="https://grpc.io/docs/languages/" target="_blank" rel="noopener">different languages</a>.</p>
+<p>How to use the interface and generate code can be read e.g., here: <a href="https://grpc.io/docs/languages/cpp/basics/" target="_blank" rel="noopener">Basics tutorial for gRPC in C++</a> or <a href="https://grpc.io/docs/languages/python/basics/" target="_blank" rel="noopener">Basics tutorial for gRPC in Python</a>.</p>
 <h3 id="interface-guideline">Interface guideline</h3>
 <p>The <a href="interface_guideline.md">gRPC interface guideline</a> provides you with help on how to specify the service interface.</p>
 <h3 id="error-codes">Error codes</h3>
-<p>The error codes and recommended usage is described in <a href="/docs/val/interface_guideline/#error-handling">Error Handling</a>. The errors implemented should be described in the gRPC interface description files (*.proto).</p>
+<p>The error codes and recommended usage is described in <a href="/velocitas-docs/docs/val/interface_guideline/#error-handling">Error Handling</a>. The errors implemented should be described in the gRPC interface description files (*.proto).</p>
 <h2 id="implement-a-vehicle-service">Implement a vehicle service</h2>
 <h3 id="examples">Examples</h3>
-<p>For help on how to implement the vehicle service, see the example seat service or the <a href="https://github.com/grpc/grpc/tree/master/examples">gRPC examples</a> in different languages.</p>
+<p>For help on how to implement the vehicle service, see the example seat service or the <a href="https://github.com/grpc/grpc/tree/master/examples" target="_blank" rel="noopener">gRPC examples</a> in different languages.</p>
 <h3 id="responsibility">Responsibility</h3>
 <p>A vehicle service &hellip;</p>
 <ul>
@@ -471,16 +471,16 @@ if (!doNotTrack) {
 <li>might be implemented vehicle- or project-specific</li>
 </ul>
 <h3 id="connection-status">Connection status</h3>
-<p>To be able to detect connectivity problems users of a gRPC service, e.g., for <a href="#interaction-with-the-vehicle-data-broker-optional"> feeding data to the data broker</a>, shall preferably monitor the gRPC connection state, see: <a href="https://grpc.github.io/grpc/core/md_doc_connectivity-semantics-and-api.html">gRPC Connectivity Semantics and API </a>.
+<p>To be able to detect connectivity problems users of a gRPC service, e.g., for <a href="#interaction-with-the-vehicle-data-broker-optional"> feeding data to the data broker</a>, shall preferably monitor the gRPC connection state, see: <a href="https://grpc.github.io/grpc/core/md_doc_connectivity-semantics-and-api.html" target="_blank" rel="noopener">gRPC Connectivity Semantics and API </a>.
 This can be used to report or log errors if the connection behaves differently than expected.</p>
 <h2 id="add-dapr-support-to-the-vehicle-service">Add Dapr support to the vehicle service</h2>
-<p>You can use the gRPC proxying feature of Dapr, which allows you to use custom *.proto files/ interfaces instead of the predefined Dapr gRPC interfaces. More can be read at <a href="https://docs.dapr.io/developing-applications/building-blocks/service-invocation/howto-invoke-services-grpc/">How-To: Invoke services using gRPC</a>.</p>
+<p>You can use the gRPC proxying feature of Dapr, which allows you to use custom *.proto files/ interfaces instead of the predefined Dapr gRPC interfaces. More can be read at <a href="https://docs.dapr.io/developing-applications/building-blocks/service-invocation/howto-invoke-services-grpc/" target="_blank" rel="noopener">How-To: Invoke services using gRPC</a>.</p>
 <p>To support Dapr within your vehicle service application ..</p>
 <ul>
 <li>the gRPC metadata <code>dapr-app-id</code> of the server needs to be specified in the call</li>
 <li>the used gRPC port should be configurable at least via the environment variable, use <code>DAPR_GRPC_PORT</code>.</li>
 </ul>
-<p>A full reference to the Dapr environment variables can be found <a href="https://docs.dapr.io/reference/environment/">here</a>.</p>
+<p>A full reference to the Dapr environment variables can be found <a href="https://docs.dapr.io/reference/environment/" target="_blank" rel="noopener">here</a>.</p>
 <h3 id="metadata">Metadata</h3>
 <p>To call the methods of a gRPC server (e.g. register data points on the data broker) via Dapr the gRPC calls need to be extended with metadata.</p>
 <p>We recommend that you read the <code>dapr-app-id</code> of the gRPC server either from the command line parameter, environment variable of configuration file instead of hardcoding it, see for Python:</p>
@@ -533,9 +533,9 @@ Dapr gRPC proxying is only allowed AFTER the Dapr sidecar is fully initialized. 
 </span></span><span style="display:flex;"><span>                    <span style="color:#000">log</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">info</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Trying to connect to data broker&#34;</span><span style="color:#000;font-weight:bold">)</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">_connected</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">False</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">_registered</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">False</span>
-</span></span></code></pre></div><p>If the Dapr side car is ready to forward, communication can be checked with the <a href="https://grpc.github.io/grpc/core/md_doc_health-checking.html">GRPC Health Checking Protocol </a>, see also <a href="https://grpc.github.io/grpc/python/grpc_health_checking.html">Python gRPC Health Checking</a>.</p>
+</span></span></code></pre></div><p>If the Dapr side car is ready to forward, communication can be checked with the <a href="https://grpc.github.io/grpc/core/md_doc_health-checking.html" target="_blank" rel="noopener">GRPC Health Checking Protocol </a>, see also <a href="https://grpc.github.io/grpc/python/grpc_health_checking.html" target="_blank" rel="noopener">Python gRPC Health Checking</a>.</p>
 <h2 id="interaction-with-the-vehicle-data-broker-optional">Interaction with the vehicle data broker (optional)</h2>
-<p>Use the <a href="https://github.com/eclipse/kuksa.val/tree/master/kuksa_databroker/proto">interface description of the vehicle data broker (*.proto files)</a> to publish data to the vehicle data broker. In the <code>collector.proto</code> you find methods to</p>
+<p>Use the <a href="https://github.com/eclipse/kuksa.val/tree/master/kuksa_databroker/proto" target="_blank" rel="noopener">interface description of the vehicle data broker (*.proto files)</a> to publish data to the vehicle data broker. In the <code>collector.proto</code> you find methods to</p>
 <ol>
 <li>register datapoints <code>RegisterDatapoints</code>, afterwards you can</li>
 <li>feed data via single calls <code>UpdateDatapoints</code> or in a stream manner <code>StreamDatapoints</code></li>
@@ -544,18 +544,18 @@ Dapr gRPC proxying is only allowed AFTER the Dapr sidecar is fully initialized. 
 <h2 id="next-steps">Next steps</h2>
 <h3 id="vehicle-apps-sdk-documentation">Vehicle Apps SDK documentation</h3>
 <ul>
-<li>Concept: <a href="/docs/concepts/python_vehicle_app_sdk_overview.md">Python SDK Overview</a></li>
+<li>Concept: <a href="/velocitas-docs/docs/concepts/python_vehicle_app_sdk_overview.md">Python SDK Overview</a></li>
 </ul>
 <h3 id="vehicle-app-development">Vehicle App development</h3>
 <ul>
-<li>Concept: <a href="/docs/concepts/development-model.md">Development Model</a></li>
-<li>Tutorial: <a href="/docs/tutorials/tutorial_how_to_create_a_vehicle_model.md">Creating a Python Vehicle Model</a></li>
+<li>Concept: <a href="/velocitas-docs/docs/concepts/development-model.md">Development Model</a></li>
+<li>Tutorial: <a href="/velocitas-docs/docs/tutorials/tutorial_how_to_create_a_vehicle_model.md">Creating a Python Vehicle Model</a></li>
 </ul>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  Last modified July 6, 2022: <a href="https://github.com/eclipse-velocitas/velocitas-docs/commit/becdf64fa1c8a36b9f4649766a9969dfba74366b">Added Velocitas logo (becdf64)</a>
+  Last modified July 6, 2022: <a href="https://github.com/eclipse-velocitas/velocitas-docs/commit/91bd14d1d6c5f5cea5eb363f43f944436cb46a47">fixed some markdown lint errors (91bd14d)</a>
 </div>
 
 </div>

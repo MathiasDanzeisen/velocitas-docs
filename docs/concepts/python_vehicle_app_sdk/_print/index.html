@@ -39,8 +39,8 @@
 
 
 
-<link rel="preload" href="/velocitas-docs/scss/main.min.1787fbd823742349458dc810c75b4ea9377ed7cae21c8fc39a9834bf5417cab5.css" as="style">
-<link href="/velocitas-docs/scss/main.min.1787fbd823742349458dc810c75b4ea9377ed7cae21c8fc39a9834bf5417cab5.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/velocitas-docs/scss/main.min.0fb0d66c8e96bd88e31a63e1907699e26bc0f292be6342209b6642b2a6e7b2b7.css" as="style">
+<link href="/velocitas-docs/scss/main.min.0fb0d66c8e96bd88e31a63e1907699e26bc0f292be6342209b6642b2a6e7b2b7.css" rel="stylesheet" integrity="">
 
 <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -119,7 +119,7 @@ if (!doNotTrack) {
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/velocitas-docs/offline-search-index.f4364463bccdce1898306526be46e0c5.json"
+  data-offline-search-index-json-src="/velocitas-docs/offline-search-index.3cd1f379e74cef0978b3b84141513785.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -174,7 +174,7 @@ This is the multi-page printable view of this section.
 <p><strong><a href="#vehicle-model-ontology">Vehicle Model Ontology</a></strong>: The SDK provides a set of model base classes for the creation of vehicle models.</p>
 </li>
 <li>
-<p><strong><a href="#middleware-integration">Middleware integration</a></strong>: Vehicle Models can contain gRPC stubs to communicate with Vehicle Services. gRPC communication is integrated with the <a href="https://dapr.io">Dapr</a> middleware for service discovery and <a href="https://opentelemetry.io">OpenTelemetry</a> tracing.</p>
+<p><strong><a href="#middleware-integration">Middleware integration</a></strong>: Vehicle Models can contain gRPC stubs to communicate with Vehicle Services. gRPC communication is integrated with the <a href="https://dapr.io" target="_blank" rel="noopener">Dapr</a> middleware for service discovery and <a href="https://opentelemetry.io" target="_blank" rel="noopener">OpenTelemetry</a> tracing.</p>
 </li>
 <li>
 <p><strong><a href="#Fluent-query--rule-construction">Fluent query &amp; rule construction</a></strong>: Based on a concrete Vehicle Model, the SDK is able to generate queries and rules against the Vehicle Data Broker to access the real values of the data points that are defined in the vehicle model.</p>
@@ -211,9 +211,9 @@ This is the multi-page printable view of this section.
 <h3 id="model">Model</h3>
 <p>A model contains services, data points and other models. It corresponds to branch entries in VSS or interfaces in DTDL or namespaces in VSC.</p>
 <h3 id="modelcollection">ModelCollection</h3>
-<p>Specifications like VSS support a concept that is called <a href="https://covesa.github.io/vehicle_signal_specification/rule_set/instances/">Instances</a>. It makes it possible to describe repeating definitions. In DTDL, such kind of structures may be modeled with <a href="https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#relationship">Relationships</a>. In the SDK, these structures are mapped with the <code>ModelCollection</code> class. A <code>ModelCollection</code> is a collection of models, which make it possible to reference an individual model either by a <code>NamedRange</code> (e.g., Row [1-3]), a <code>Dictionary</code> (e.g., &ldquo;Left&rdquo;, &ldquo;Right&rdquo;) or a combination of both.</p>
+<p>Specifications like VSS support a concept that is called <a href="https://covesa.github.io/vehicle_signal_specification/rule_set/instances/" target="_blank" rel="noopener">Instances</a>. It makes it possible to describe repeating definitions. In DTDL, such kind of structures may be modeled with <a href="https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#relationship" target="_blank" rel="noopener">Relationships</a>. In the SDK, these structures are mapped with the <code>ModelCollection</code> class. A <code>ModelCollection</code> is a collection of models, which make it possible to reference an individual model either by a <code>NamedRange</code> (e.g., Row [1-3]), a <code>Dictionary</code> (e.g., &ldquo;Left&rdquo;, &ldquo;Right&rdquo;) or a combination of both.</p>
 <h3 id="service">Service</h3>
-<p>Direct synchronous communication between Vehicle Apps and Vehicle Services is  facilitated via the <a href="https://grpc.io">gRPC</a> protocol.</p>
+<p>Direct synchronous communication between Vehicle Apps and Vehicle Services is  facilitated via the <a href="https://grpc.io" target="_blank" rel="noopener">gRPC</a> protocol.</p>
 <p>The SDK has its own <code>Service</code> base class, which provides a convenience API layer to access the exposed methods of exactly one gRPC endpoint of a Vehicle Service or another Vehicle App. Please see the <a href="#middleware-integration">Middleware Integration</a> section for more details.</p>
 <h3 id="datapoint">DataPoint</h3>
 <p><code>DataPoint</code> is the base class for all data points. It corresponds to sensors/actuators in VSS or telemetry / properties in DTDL.</p>
@@ -390,13 +390,12 @@ The gRPC stubs are wrapped by a <strong>convenience layer</strong> class derived
 </span></span><span style="display:flex;"><span><span style="color:#000">LOOP</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">run_until_complete</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">main</span><span style="color:#000;font-weight:bold">())</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">LOOP</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">close</span><span style="color:#000;font-weight:bold">()</span>
 </span></span></code></pre></div><h2 id="further-information">Further information</h2>
-<h3 id="vehicle-app-development">Vehicle App development</h3>
 <ul>
-<li>Concept: <a href="/docs/concepts/development-model.md">Development Model</a></li>
-<li>Tutorial: <a href="/docs/tutorials/setup_and_explore_development_environment.md">Setup and Explore Development Enviroment</a></li>
-<li>Tutorial: <a href="/docs/tutorials/tutorial_how_to_create_a_vehicle_model.md">Creating a Python Vehicle Model</a></li>
-<li>Tutorial: <a href="/docs/tutorials/tutorial_how_to_create_a_vehicle_app.md">Create a Python Vehicle App</a></li>
-<li>Tutorial: <a href="/docs/tutorials/integration_tests.md">Develop and run integration tests for a Vehicle App</a></li>
+<li>Concept: <a href="/velocitas-docs/docs/concepts/development-model.md">Development Model</a></li>
+<li>Tutorial: <a href="/velocitas-docs/docs/tutorials/setup_and_explore_development_environment.md">Setup and Explore Development Enviroment</a></li>
+<li>Tutorial: <a href="/velocitas-docs/docs/tutorials/tutorial_how_to_create_a_vehicle_model.md">Creating a Python Vehicle Model</a></li>
+<li>Tutorial: <a href="/velocitas-docs/docs/tutorials/tutorial_how_to_create_a_vehicle_app.md">Create a Python Vehicle App</a></li>
+<li>Tutorial: <a href="/velocitas-docs/docs/tutorials/integration_tests.md">Develop and run integration tests for a Vehicle App</a></li>
 </ul>
 
 </div>

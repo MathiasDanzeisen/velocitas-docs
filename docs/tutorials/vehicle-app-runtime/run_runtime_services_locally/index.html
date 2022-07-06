@@ -28,14 +28,14 @@ Quick Start: Each component has a task that is defined in .vscode/tasks.json:
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/velocitas-docs/docs/tutorials/vehicle-app-runtime/run_runtime_services_locally/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2022-05-09T13:43:25+05:30" />
-<meta property="article:modified_time" content="2022-07-06T12:28:55+02:00" />
+<meta property="article:modified_time" content="2022-07-06T13:40:27+00:00" />
 
 <meta itemprop="name" content="Run runtime services locally">
 <meta itemprop="description" content="Using tasks in Visual Studio Code Overview: If you are developing in Visual Studio Code, the runtime components (like Vehicle Data Broker or Vehicle Services) are available for local execution as Tasks, a feature of the Visual Studio Code. Additional information on tasks can be found here.
 Quick Start: Each component has a task that is defined in .vscode/tasks.json:
  Dapr (Local - Ensure Dapr): installs Dapr CLI and initializes Dapr if required Mosquitto (Local - Mosquitto): runs Mosquitto as a container (docker run) Vehicle Data Broker (Local - VehicleDataBroker): downloads and runs Vehicle Data Broker (Optional) Seat Service (Local - SeatService): downloads and runs Seat Service, an example Vehicle Service (Optional) Feeder Can (Local - FeederCan): downloads and runs FeederCAN  Run as Bundle: To orchestrate these tasks, a task called Start Vehicle App runtime is available."><meta itemprop="datePublished" content="2022-05-09T13:43:25+05:30" />
-<meta itemprop="dateModified" content="2022-07-06T12:28:55+02:00" />
-<meta itemprop="wordCount" content="725">
+<meta itemprop="dateModified" content="2022-07-06T13:40:27+00:00" />
+<meta itemprop="wordCount" content="717">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Run runtime services locally"/>
 <meta name="twitter:description" content="Using tasks in Visual Studio Code Overview: If you are developing in Visual Studio Code, the runtime components (like Vehicle Data Broker or Vehicle Services) are available for local execution as Tasks, a feature of the Visual Studio Code. Additional information on tasks can be found here.
@@ -45,8 +45,8 @@ Quick Start: Each component has a task that is defined in .vscode/tasks.json:
 
 
 
-<link rel="preload" href="/velocitas-docs/scss/main.min.1787fbd823742349458dc810c75b4ea9377ed7cae21c8fc39a9834bf5417cab5.css" as="style">
-<link href="/velocitas-docs/scss/main.min.1787fbd823742349458dc810c75b4ea9377ed7cae21c8fc39a9834bf5417cab5.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/velocitas-docs/scss/main.min.0fb0d66c8e96bd88e31a63e1907699e26bc0f292be6342209b6642b2a6e7b2b7.css" as="style">
+<link href="/velocitas-docs/scss/main.min.0fb0d66c8e96bd88e31a63e1907699e26bc0f292be6342209b6642b2a6e7b2b7.css" rel="stylesheet" integrity="">
 
 <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -125,7 +125,7 @@ if (!doNotTrack) {
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/velocitas-docs/offline-search-index.f4364463bccdce1898306526be46e0c5.json"
+  data-offline-search-index-json-src="/velocitas-docs/offline-search-index.3cd1f379e74cef0978b3b84141513785.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -148,7 +148,7 @@ if (!doNotTrack) {
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/velocitas-docs/offline-search-index.f4364463bccdce1898306526be46e0c5.json"
+  data-offline-search-index-json-src="/velocitas-docs/offline-search-index.3cd1f379e74cef0978b3b84141513785.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -273,9 +273,9 @@ if (!doNotTrack) {
           <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
             
 <div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
-<a href="https://github.com/eclipse-velocitas/velocitas-docs/tree/main/content/en/docs/Tutorials/Vehicle%20App%20Runtime/run_runtime_services_locally.md" class="td-page-meta--view" target="_blank" rel="noopener"><i class="fa fa-file-alt fa-fw"></i> View page source</a>
-  <a href="https://github.com/eclipse-velocitas/velocitas-docs/edit/main/content/en/docs/Tutorials/Vehicle%20App%20Runtime/run_runtime_services_locally.md" class="td-page-meta--edit" target="_blank" rel="noopener"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-  <a href="https://github.com/eclipse-velocitas/velocitas-docs/new/main/content/en/docs/Tutorials/Vehicle%20App%20Runtime/run_runtime_services_locally.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child" target="_blank" rel="noopener"><i class="fa fa-edit fa-fw"></i> Create child page</a>
+<a href="https://github.com/eclipse-velocitas/velocitas-docs/tree/main/content/en/docs/tutorials/vehicle-app-runtime/run_runtime_services_locally.md" class="td-page-meta--view" target="_blank" rel="noopener"><i class="fa fa-file-alt fa-fw"></i> View page source</a>
+  <a href="https://github.com/eclipse-velocitas/velocitas-docs/edit/main/content/en/docs/tutorials/vehicle-app-runtime/run_runtime_services_locally.md" class="td-page-meta--edit" target="_blank" rel="noopener"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+  <a href="https://github.com/eclipse-velocitas/velocitas-docs/new/main/content/en/docs/tutorials/vehicle-app-runtime/run_runtime_services_locally.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child" target="_blank" rel="noopener"><i class="fa fa-edit fa-fw"></i> Create child page</a>
   <a href="https://github.com/eclipse-velocitas/velocitas-docs/issues/new?title=Run%20runtime%20services%20locally" class="td-page-meta--issue" target="_blank" rel="noopener"><i class="fas fa-tasks fa-fw"></i> Create documentation issue</a>
   <a href="https://github.com/eclipse-velocitas/issues/new" class="td-page-meta--project-issue" target="_blank" rel="noopener"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
   <a id="print" href="/velocitas-docs/docs/tutorials/vehicle-app-runtime/_print/"><i class="fa fa-print fa-fw"></i> Print entire section</a>
@@ -300,13 +300,7 @@ if (!doNotTrack) {
         <li><a href="#codespaces">Codespaces</a></li>
       </ul>
     </li>
-    <li><a href="#next-steps">Next steps</a>
-      <ul>
-        <li><a href="#runtime-services">Runtime services</a></li>
-        <li><a href="#vehicle-app-development">Vehicle App development</a></li>
-        <li><a href="#release-and-deploy">Release and deploy</a></li>
-      </ul>
-    </li>
+    <li><a href="#next-steps">Next steps</a></li>
   </ul>
 </nav></div>
 
@@ -383,7 +377,7 @@ if (!doNotTrack) {
 		
 	</header>    
 	<h2 id="using-tasks-in-visual-studio-code">Using tasks in Visual Studio Code</h2>
-<p><strong>Overview:</strong> If you are developing in Visual Studio Code, the runtime components (like <em>Vehicle Data Broker</em> or <em>Vehicle Services</em>) are available for local execution as <em>Tasks</em>, a feature of the Visual Studio Code. Additional information on tasks can be found <a href="https://code.visualstudio.com/docs/editor/tasks">here</a>.</p>
+<p><strong>Overview:</strong> If you are developing in Visual Studio Code, the runtime components (like <em>Vehicle Data Broker</em> or <em>Vehicle Services</em>) are available for local execution as <em>Tasks</em>, a feature of the Visual Studio Code. Additional information on tasks can be found <a href="https://code.visualstudio.com/docs/editor/tasks" target="_blank" rel="noopener">here</a>.</p>
 <p><strong>Quick Start:</strong> Each component has a task that is defined in <em>.vscode/tasks.json</em>:</p>
 <ul>
 <li>Dapr (<code>Local - Ensure Dapr</code>): installs Dapr CLI and initializes Dapr if required</li>
@@ -397,7 +391,7 @@ if (!doNotTrack) {
 <p><strong>Logging:</strong> Running tasks appear in the Terminals View of Visual Studio Code. From there, you can see the logs of each running task.</p>
 <p><strong>Scripting:</strong> The tasks itself are executing scripts that are located in <code>.vscode/scripts</code>. These scripts download the specified version of the runtime components and execute them along with Dapr. The same mechanism can be used to register additional services or prerequisites by adding new task definitions in the <code>tasks.json</code> file.</p>
 <h2 id="change-version-of-runtime-services">Change version of runtime services</h2>
-<p>The version for the runtime services is defined in the file <a href="https://github.com/eclipse-velocitas/vehicle-app-python-template/blob/main/prerequisite_settings.json"><code>./prerequisite_settings.json</code></a>. If you want to update the version, change it within the file and re-run the runtime services by restarting the tasks or the script.</p>
+<p>The version for the runtime services is defined in the file <a href="https://github.com/eclipse-velocitas/vehicle-app-python-template/blob/main/prerequisite_settings.json" target="_blank" rel="noopener"><code>./prerequisite_settings.json</code></a>. If you want to update the version, change it within the file and re-run the runtime services by restarting the tasks or the script.</p>
 <h2 id="using-vehicle-databroker-cli">Using Vehicle Databroker CLI</h2>
 <p>A CLI tool is provided for the interact with a running instance of the Vehicle Data Broker. It can be started by running the task <code>run-vehicledatabroker-cli</code>(by pressing <em>F1</em>, type <em>Run Task</em> followed by <code>run-vehicledatabroker-cli</code>). The <em>Vehicle Data Broker</em> needs to be running for you to be able to use the tool.</p>
 <h2 id="integrating-a-new-service-into-visual-studio-code-task">Integrating a new service into Visual Studio Code Task</h2>
@@ -443,25 +437,18 @@ A new service can be easily started by calling it from bash script, however rest
 <h3 id="codespaces">Codespaces</h3>
 <p>If you are using Codespaces, remember that you are working on a remote agent. That&rsquo;s why it could happen that the tasks are already running in the background. If that&rsquo;s the case a new start of the tasks will fail, since the ports are already in use. In the Dapr-tab of the sidebar you can check if there are already tasks running. Another possibility to check if the processes are already running, is to check which ports are already open. Check the Ports-tab to view all open ports (if not already open, hit <code>F1</code> and enter <code>View: Toggle Ports</code>).</p>
 <h2 id="next-steps">Next steps</h2>
-<h3 id="runtime-services">Runtime services</h3>
 <ul>
-<li>Tutorial: <a href="/docs/tutorials/run_runtime_services_kubernetes.md">Deploy runtime services in Kubernetes mode</a></li>
-</ul>
-<h3 id="vehicle-app-development">Vehicle App development</h3>
-<ul>
-<li>Tutorial: <a href="/docs/tutorials/setup_and_explore_development_environment.md">Setup and Explore Development Enviroment</a></li>
-</ul>
-<h3 id="release-and-deploy">Release and deploy</h3>
-<ul>
-<li>Concept: <a href="/docs/concepts/deployment-model.md">Deployment Model</a></li>
-<li>Concept: <a href="/docs/concepts/vehicle_app_releases.md">Release your Vehicle App</a></li>
-<li>Tutorial: <a href="/docs/tutorials/tutorial_how_to_deploy_a_vehicle_app_with_helm.md">Deploy a Python Vehicle App with Helm</a></li>
+<li>Tutorial: <a href="/velocitas-docs/docs/tutorials/run_runtime_services_kubernetes.md">Deploy runtime services in Kubernetes mode</a></li>
+<li>Tutorial: <a href="/velocitas-docs/docs/tutorials/setup_and_explore_development_environment.md">Setup and Explore Development Enviroment</a></li>
+<li>Concept: <a href="/velocitas-docs/docs/concepts/deployment-model.md">Deployment Model</a></li>
+<li>Concept: <a href="/velocitas-docs/docs/concepts/vehicle_app_releases.md">Release your Vehicle App</a></li>
+<li>Tutorial: <a href="/velocitas-docs/docs/tutorials/tutorial_how_to_deploy_a_vehicle_app_with_helm.md">Deploy a Python Vehicle App with Helm</a></li>
 </ul>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  Last modified July 6, 2022: <a href="https://github.com/eclipse-velocitas/velocitas-docs/commit/becdf64fa1c8a36b9f4649766a9969dfba74366b">Added Velocitas logo (becdf64)</a>
+  Last modified July 6, 2022: <a href="https://github.com/eclipse-velocitas/velocitas-docs/commit/91bd14d1d6c5f5cea5eb363f43f944436cb46a47">fixed some markdown lint errors (91bd14d)</a>
 </div>
 
 </div>
