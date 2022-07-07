@@ -128,7 +128,7 @@ You can either try it out directly in the browser or also use it inside Visual S
 &lt;p&gt;A new window will open where you see the logs for setting up the container. On this window you could now also choose to work with Visual Studio Code. The environment remains on a remote agent and Visual Studio Code establishes a connection to this machine.&lt;/p&gt;
 &lt;p&gt;Once everything is set up in the Codespace, you can work with it in the same way as with the normal DevContainer inside Visual Studio Code.&lt;/p&gt;
 &lt;h2 id=&#34;starting-runtime-services&#34;&gt;Starting runtime services&lt;/h2&gt;
-&lt;p&gt;The runtime services (like &lt;em&gt;Vehicle Data Broker&lt;/em&gt; or &lt;em&gt;Vehicle Services&lt;/em&gt;) are required to develop vehicle apps and run integration tests.&lt;/p&gt;
+&lt;p&gt;The runtime services (like &lt;em&gt;KUKSA Data Broker&lt;/em&gt; or &lt;em&gt;Vehicle Services&lt;/em&gt;) are required to develop vehicle apps and run integration tests.&lt;/p&gt;
 &lt;p&gt;A Visual Studio Code task called &lt;code&gt;Start Vehicle App runtime&lt;/code&gt; is available to run these in the correct order. Click &lt;code&gt;F1&lt;/code&gt;, select command &lt;code&gt;Tasks: Run Task&lt;/code&gt;, select &lt;code&gt;Start VehicleApp runtime&lt;/code&gt; and &lt;code&gt;Continue without scanning the output&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;You should see the tasks &lt;code&gt;run-mosquitto&lt;/code&gt;, &lt;code&gt;run-vehicledatabroker&lt;/code&gt;, &lt;code&gt;run-seatservice&lt;/code&gt; and &lt;code&gt;run-feedercan&lt;/code&gt; being executed in the Visual Studio Code output panel.&lt;/p&gt;
 &lt;p&gt;More information about the tasks are available &lt;a href=&#34;/velocitas-docs/velocitas-docs/docs/run_runtime_services_locally.md&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
@@ -981,7 +981,7 @@ Once the application is ready to be released in a new version, a dedicated relea
       <description>
         
         
-        &lt;p&gt;To be sure that a newly created &lt;em&gt;Vehicle App&lt;/em&gt; will run together with the &lt;em&gt;Vehicle Data Broker&lt;/em&gt; and potentially other dependant &lt;em&gt;Vehicle Services&lt;/em&gt; or &lt;em&gt;Vehicle Apps&lt;/em&gt;, it&amp;rsquo;s essential to write integration tests along with developing the app.&lt;/p&gt;
+        &lt;p&gt;To be sure that a newly created &lt;em&gt;Vehicle App&lt;/em&gt; will run together with the &lt;em&gt;KUKSA Data Broker&lt;/em&gt; and potentially other dependant &lt;em&gt;Vehicle Services&lt;/em&gt; or &lt;em&gt;Vehicle Apps&lt;/em&gt;, it&amp;rsquo;s essential to write integration tests along with developing the app.&lt;/p&gt;
 &lt;p&gt;To execute an integration test, the dependant components need to be running and accessible from the test runner. This guide will describe how integration tests can be written and integrated in the CI pipeline so that they are executed automatically when building the application.&lt;/p&gt;
 &lt;h2 id=&#34;quickstart&#34;&gt;Quickstart&lt;/h2&gt;
 &lt;ol&gt;
@@ -995,7 +995,7 @@ Once the application is ready to be released in a new version, a dedicated relea
 &lt;ul&gt;
 &lt;li&gt;Dapr&lt;/li&gt;
 &lt;li&gt;Mosquitto&lt;/li&gt;
-&lt;li&gt;Vehicle Data Broker&lt;/li&gt;
+&lt;li&gt;Data Broker&lt;/li&gt;
 &lt;li&gt;Vehicle Services&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;We distinguish between two environments for executing the &lt;em&gt;Vehicle App&lt;/em&gt; and the runtime components:&lt;/p&gt;
@@ -1014,7 +1014,7 @@ Once the application is ready to be released in a new version, a dedicated relea
 &lt;li&gt;&lt;code&gt;VDB_PORT: 30555&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;writing-test-cases&#34;&gt;Writing Test Cases&lt;/h2&gt;
-&lt;p&gt;To write an integration test, you should check the sample that comes with the template (&lt;a href=&#34;https://github.com/eclipse-velocitas/vehicle-app-python-template/blob/main/test/integration_test.py&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;/test/integration_test.py&lt;/code&gt;&lt;/a&gt;). To support interacting with the MQTT broker and the Vehicle Data Broker (to get and set values for DataPoints), there are two classes present in Python SDK that will help:&lt;/p&gt;
+&lt;p&gt;To write an integration test, you should check the sample that comes with the template (&lt;a href=&#34;https://github.com/eclipse-velocitas/vehicle-app-python-template/blob/main/test/integration_test.py&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;/test/integration_test.py&lt;/code&gt;&lt;/a&gt;). To support interacting with the MQTT broker and the KUKSA Data Broker (to get and set values for DataPoints), there are two classes present in Python SDK that will help:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;code&gt;MqttClient&lt;/code&gt;: this class provides methods for interacting with the MQTT broker. Currently, the following methods are available:&lt;/p&gt;
@@ -1037,7 +1037,7 @@ Once the application is ready to be released in a new version, a dedicated relea
 &lt;p&gt;This class can be initialized with a given port. If no port is specified, the environment variable &lt;code&gt;MQTT_PORT&lt;/code&gt; will be checked. If this is not possible either, the default value of &lt;code&gt;1883&lt;/code&gt; will be used. &lt;strong&gt;It&amp;rsquo;s recommended to specify no port when initializing that class as it will locally use the default port &lt;code&gt;1883&lt;/code&gt; and in CI the port set by the environment variable &lt;code&gt;MQTT_PORT&lt;/code&gt;. This will prevent a check-in in the wrong port from local development.&lt;/strong&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;code&gt;IntTestHelper&lt;/code&gt;: this class provides functionality to interact with the &lt;em&gt;Vehicle Data Broker&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;IntTestHelper&lt;/code&gt;: this class provides functionality to interact with the &lt;em&gt;KUKSA Data Broker&lt;/em&gt;.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;register_dapoint&lt;/code&gt;: registers a new datapoint with given name and type&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;set_..._datapoint&lt;/code&gt;: set the given value for the datapoint with the given name (with given type). If the datapoint does not exist, it will be registered.&lt;/li&gt;
@@ -1049,7 +1049,7 @@ Once the application is ready to be released in a new version, a dedicated relea
 &lt;p&gt;&lt;strong&gt;Please make sure that you don&amp;rsquo;t check in the test classes with using local ports because then the execution in the CI workflow will fail (as the CI workflow uses Kubernetes execution for running integration tests).&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;running-tests-locally&#34;&gt;Running Tests locally&lt;/h2&gt;
-&lt;p&gt;Once tests are developed, they can be executed against the running runtime components, either to the &lt;strong&gt;&lt;em&gt;local runtime&lt;/em&gt;&lt;/strong&gt;&lt;code&gt;(**Remark Bjoern:** Should we talk here - in analogy to dapr-terminology - of &amp;quot;self-hosted&amp;quot;. Because &amp;quot;local&amp;quot; is used already for distinguishing between execution on local machine vs. CI pripline)&lt;/code&gt; or in Kubernetes mode, by using the test runner in Visual Studio Code. The switch to run against the local components or the Kubernetes components is specified by the port. Local ports for &lt;em&gt;Mosquitto&lt;/em&gt; and &lt;em&gt;Vehicle Data Broker&lt;/em&gt; are &lt;code&gt;1883&lt;/code&gt;/&lt;code&gt;55555&lt;/code&gt;. In Kubernetes mode, the ports would be the locally exposed ports &lt;code&gt;31883&lt;/code&gt;/&lt;code&gt;30555&lt;/code&gt;. If using the Kubernetes ports, the tests will be executed against the runtime components/application that run in containers within the Kubernetes cluster.&lt;/p&gt;
+&lt;p&gt;Once tests are developed, they can be executed against the running runtime components, either to the &lt;strong&gt;&lt;em&gt;local runtime&lt;/em&gt;&lt;/strong&gt;&lt;code&gt;(**Remark Bjoern:** Should we talk here - in analogy to dapr-terminology - of &amp;quot;self-hosted&amp;quot;. Because &amp;quot;local&amp;quot; is used already for distinguishing between execution on local machine vs. CI pripline)&lt;/code&gt; or in Kubernetes mode, by using the test runner in Visual Studio Code. The switch to run against the local components or the Kubernetes components is specified by the port. Local ports for &lt;em&gt;Mosquitto&lt;/em&gt; and &lt;em&gt;KUKSA Data Broker&lt;/em&gt; are &lt;code&gt;1883&lt;/code&gt;/&lt;code&gt;55555&lt;/code&gt;. In Kubernetes mode, the ports would be the locally exposed ports &lt;code&gt;31883&lt;/code&gt;/&lt;code&gt;30555&lt;/code&gt;. If using the Kubernetes ports, the tests will be executed against the runtime components/application that run in containers within the Kubernetes cluster.&lt;/p&gt;
 &lt;h2 id=&#34;running-tests-in-ci-pipeline&#34;&gt;Running Tests in CI pipeline&lt;/h2&gt;
 &lt;p&gt;The tests will be discovered and executed automatically in the &lt;a href=&#34;https://github.com/eclipse-velocitas/vehicle-app-python-template/blob/main/.github/workflows/ci.yml&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CI pipeline&lt;/a&gt;. The job &lt;code&gt;Run Integration Tests&lt;/code&gt; contains all steps to setup and execute tests in Kubernetes mode. The results are published as test results to the workflow.&lt;/p&gt;
 &lt;h1 id=&#34;common-tasks&#34;&gt;Common Tasks&lt;/h1&gt;
@@ -1079,7 +1079,7 @@ Once the application is ready to be released in a new version, a dedicated relea
 &lt;/ul&gt;
 &lt;h2 id=&#34;troubleshoot-inttesthelper&#34;&gt;Troubleshoot IntTestHelper&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;Make sure that the &lt;em&gt;Vehicle Data Broker&lt;/em&gt; is up and running by checking the task log.&lt;/li&gt;
+&lt;li&gt;Make sure that the &lt;em&gt;KUKSA Data Broker&lt;/em&gt; is up and running by checking the task log.&lt;/li&gt;
 &lt;li&gt;Make sure that you are using the right ports for local/Kubernetes execution.&lt;/li&gt;
 &lt;li&gt;Make sure that you installed the correct version of the SDK (&lt;em&gt;SDV&lt;/em&gt;-package).&lt;/li&gt;
 &lt;/ul&gt;
@@ -1657,7 +1657,7 @@ The existing VSC definitions shall preferably be extended with comments so that 
 &lt;li&gt;&lt;a href=&#34;#connection-status-with-dapr&#34;&gt;Connection status with Dapr&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#interaction-with-the-vehicle-data-broker-optional&#34;&gt;Interaction with the vehicle data broker (optional)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#interaction-with-the-kuksa-data-broker-optional&#34;&gt;Interaction with the KUKSA Data Broker (optional)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#next-steps&#34;&gt;Next steps&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#vehicle-apps-sdk-documentation&#34;&gt;Vehicle Apps SDK documentation&lt;/a&gt;&lt;/li&gt;
@@ -1677,7 +1677,7 @@ The existing VSC definitions shall preferably be extended with comments so that 
 &lt;li&gt;Implement the service&lt;/li&gt;
 &lt;li&gt;Add support for &lt;a href=&#34;https://dapr.io&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Dapr&lt;/a&gt; middleware&lt;/li&gt;
 &lt;li&gt;(optional) Implement simulation&lt;/li&gt;
-&lt;li&gt;(optional) Interaction with the vehicle data broker&lt;/li&gt;
+&lt;li&gt;(optional) Interaction with the KUKSA data broker&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;define-a-service-interface&#34;&gt;Define a service interface&lt;/h2&gt;
 &lt;h3 id=&#34;semantic-model&#34;&gt;Semantic model&lt;/h3&gt;
@@ -1709,7 +1709,7 @@ The existing VSC definitions shall preferably be extended with comments so that 
 &lt;li&gt;might be implemented vehicle- or project-specific&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;connection-status&#34;&gt;Connection status&lt;/h3&gt;
-&lt;p&gt;To be able to detect connectivity problems users of a gRPC service, e.g., for &lt;a href=&#34;#interaction-with-the-vehicle-data-broker-optional&#34;&gt; feeding data to the data broker&lt;/a&gt;, shall preferably monitor the gRPC connection state, see: &lt;a href=&#34;https://grpc.github.io/grpc/core/md_doc_connectivity-semantics-and-api.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;gRPC Connectivity Semantics and API &lt;/a&gt;.
+&lt;p&gt;To be able to detect connectivity problems users of a gRPC service, e.g., for &lt;a href=&#34;#interaction-with-the-kuksa-data-broker-optional&#34;&gt; feeding data to the data broker&lt;/a&gt;, shall preferably monitor the gRPC connection state, see: &lt;a href=&#34;https://grpc.github.io/grpc/core/md_doc_connectivity-semantics-and-api.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;gRPC Connectivity Semantics and API &lt;/a&gt;.
 This can be used to report or log errors if the connection behaves differently than expected.&lt;/p&gt;
 &lt;h2 id=&#34;add-dapr-support-to-the-vehicle-service&#34;&gt;Add Dapr support to the vehicle service&lt;/h2&gt;
 &lt;p&gt;You can use the gRPC proxying feature of Dapr, which allows you to use custom *.proto files/ interfaces instead of the predefined Dapr gRPC interfaces. More can be read at &lt;a href=&#34;https://docs.dapr.io/developing-applications/building-blocks/service-invocation/howto-invoke-services-grpc/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How-To: Invoke services using gRPC&lt;/a&gt;.&lt;/p&gt;
@@ -1737,7 +1737,7 @@ Dapr gRPC proxying is only allowed AFTER the Dapr sidecar is fully initialized. 
 &lt;ol&gt;
 &lt;li&gt;Create a gRPC Server and listen&lt;/li&gt;
 &lt;li&gt;Wait for the sidecar (e.g., poll health endpoint or sleep )&lt;/li&gt;
-&lt;li&gt;Execute gRPC proxying calls (e.g., against Vehicle Data Broker)&lt;/li&gt;
+&lt;li&gt;Execute gRPC proxying calls (e.g., against KUKSA Data Broker)&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Example: A callback for the connectivity state in conjugation with retry to call the server:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#000&#34;&gt;channel&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;grpc&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;insecure_channel&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;databroker_address&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
@@ -1772,11 +1772,11 @@ Dapr gRPC proxying is only allowed AFTER the Dapr sidecar is fully initialized. 
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#3465a4&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;_connected&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;False&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#3465a4&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;_registered&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;False&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If the Dapr side car is ready to forward, communication can be checked with the &lt;a href=&#34;https://grpc.github.io/grpc/core/md_doc_health-checking.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GRPC Health Checking Protocol &lt;/a&gt;, see also &lt;a href=&#34;https://grpc.github.io/grpc/python/grpc_health_checking.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Python gRPC Health Checking&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;interaction-with-the-vehicle-data-broker-optional&#34;&gt;Interaction with the vehicle data broker (optional)&lt;/h2&gt;
-&lt;p&gt;Use the &lt;a href=&#34;https://github.com/eclipse/kuksa.val/tree/master/kuksa_databroker/proto&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;interface description of the vehicle data broker (*.proto files)&lt;/a&gt; to publish data to the vehicle data broker. In the &lt;code&gt;collector.proto&lt;/code&gt; you find methods to&lt;/p&gt;
+&lt;h2 id=&#34;interaction-with-the-kuksa-data-broker-optional&#34;&gt;Interaction with the KUKSA Data Broker (optional)&lt;/h2&gt;
+&lt;p&gt;Use the &lt;a href=&#34;https://github.com/eclipse/kuksa.val/tree/master/kuksa_databroker/proto&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;interface description of the KUKSA data broker (*.proto files)&lt;/a&gt; to publish data to the data broker. In the &lt;code&gt;collector.proto&lt;/code&gt; you find methods to&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;register datapoints &lt;code&gt;RegisterDatapoints&lt;/code&gt;, afterwards you can&lt;/li&gt;
-&lt;li&gt;feed data via single calls &lt;code&gt;UpdateDatapoints&lt;/code&gt; or in a stream manner &lt;code&gt;StreamDatapoints&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;feed data via single calls &lt;code&gt;UpdateDatapoints&lt;/code&gt; or in a stream manner &lt;code&gt;StreamDatapoints&lt;/code&gt;.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;See the *.proto files for a detailed description.&lt;/p&gt;
 &lt;h2 id=&#34;next-steps&#34;&gt;Next steps&lt;/h2&gt;
@@ -1809,7 +1809,7 @@ Dapr gRPC proxying is only allowed AFTER the Dapr sidecar is fully initialized. 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;K3D - Install prerequisites&lt;/code&gt;: Install prerequisite components K3D, Helm, KubeCTL and Dapr without configuring them.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;K3D - Configure control plane&lt;/code&gt;: Creates a local container registry used by K3D as well as an K3D cluster with Dapr enabled.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;K3D - Deploy runtime&lt;/code&gt;: Deploys the runtime components (like Vehicle Data Broker, Seat Service, &amp;hellip;) within the K3D cluster.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;K3D - Deploy runtime&lt;/code&gt;: Deploys the runtime components (like KUKSA Data Broker, Seat Service, &amp;hellip;) within the K3D cluster.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;K3D - Build SeatAdjusterApp&lt;/code&gt;: Builds the SeatAdjusterApp and pushes it to the local K3D registry.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;K3D - Deploy SeatAdjusterApp&lt;/code&gt;: Builds and deploys the SeatAdjusterApp via Helm to the K3D cluster.&lt;/li&gt;
 &lt;/ul&gt;
@@ -1826,7 +1826,7 @@ Dapr gRPC proxying is only allowed AFTER the Dapr sidecar is fully initialized. 
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;K3D is configured so that &lt;em&gt;Mosquitto&lt;/em&gt; and the &lt;em&gt;Vehicle Data Broker&lt;/em&gt; can be reached from outside the container over the ports &lt;code&gt;31883&lt;/code&gt; (Mosquitto) and &lt;code&gt;30555&lt;/code&gt;(Vehicle Data Broker). The test runner, that is running outside of the cluster, can interact with these services over those ports.&lt;/p&gt;
+&lt;p&gt;K3D is configured so that &lt;em&gt;Mosquitto&lt;/em&gt; and the &lt;em&gt;KUKSA Data Broker&lt;/em&gt; can be reached from outside the container over the ports &lt;code&gt;31883&lt;/code&gt; (Mosquitto) and &lt;code&gt;30555&lt;/code&gt;(KUKSA Data Broker). The test runner, that is running outside of the cluster, can interact with these services over those ports.&lt;/p&gt;
 &lt;p&gt;To check the status of your K3D instance (running pods, containers, logs, &amp;hellip;) you can either use the &lt;code&gt;kubectl&lt;/code&gt; utility or start &lt;em&gt;K9s&lt;/em&gt; (after running the task &lt;code&gt;K3D - Install tooling&lt;/code&gt; once) in a terminal window to have a UI for interacting with the cluster.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Run as Bundle:&lt;/strong&gt; To orchestrate these tasks, a task called &lt;code&gt;K3D - Deploy SeatAdjusterApp&lt;/code&gt; is available. This task runs the other tasks in the correct order. You can run this task by clicking &lt;code&gt;F1&lt;/code&gt; and choose &lt;code&gt;Tasks: Run task&lt;/code&gt;, then select &lt;code&gt;K3D - Deploy SeatAdjusterApp&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Tasks Management:&lt;/strong&gt; Visual Studio Code offers various other commands concerning tasks like Start/Terminate/Restart/&amp;hellip; You can access them by pressing F1 and typing &lt;code&gt;task&lt;/code&gt;. A list with available task commands will appear.&lt;/p&gt;
@@ -1864,12 +1864,12 @@ All the files that are located in &lt;code&gt;deploy/runtime/k3d/volume&lt;/code
         
         
         &lt;h2 id=&#34;using-tasks-in-visual-studio-code&#34;&gt;Using tasks in Visual Studio Code&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Overview:&lt;/strong&gt; If you are developing in Visual Studio Code, the runtime components (like &lt;em&gt;Vehicle Data Broker&lt;/em&gt; or &lt;em&gt;Vehicle Services&lt;/em&gt;) are available for local execution as &lt;em&gt;Tasks&lt;/em&gt;, a feature of the Visual Studio Code. Additional information on tasks can be found &lt;a href=&#34;https://code.visualstudio.com/docs/editor/tasks&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Overview:&lt;/strong&gt; If you are developing in Visual Studio Code, the runtime components (like &lt;em&gt;KUKSA Data Broker&lt;/em&gt; or &lt;em&gt;Vehicle Services&lt;/em&gt;) are available for local execution as &lt;em&gt;Tasks&lt;/em&gt;, a feature of the Visual Studio Code. Additional information on tasks can be found &lt;a href=&#34;https://code.visualstudio.com/docs/editor/tasks&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Quick Start:&lt;/strong&gt; Each component has a task that is defined in &lt;em&gt;.vscode/tasks.json&lt;/em&gt;:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Dapr (&lt;code&gt;Local - Ensure Dapr&lt;/code&gt;): installs Dapr CLI and initializes Dapr if required&lt;/li&gt;
 &lt;li&gt;Mosquitto (&lt;code&gt;Local - Mosquitto&lt;/code&gt;): runs &lt;em&gt;Mosquitto&lt;/em&gt; as a container (&lt;code&gt;docker run&lt;/code&gt;)&lt;/li&gt;
-&lt;li&gt;Vehicle Data Broker (&lt;code&gt;Local - VehicleDataBroker&lt;/code&gt;): downloads and runs &lt;em&gt;Vehicle Data Broker&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;KUKSA Data Broker (&lt;code&gt;Local - VehicleDataBroker&lt;/code&gt;): downloads and runs &lt;em&gt;KUKSA Data Broker&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;(Optional) Seat Service (&lt;code&gt;Local - SeatService&lt;/code&gt;): downloads and runs &lt;em&gt;Seat Service&lt;/em&gt;, an example &lt;code&gt;Vehicle Service&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;(Optional) Feeder Can (&lt;code&gt;Local - FeederCan&lt;/code&gt;): downloads and runs &lt;em&gt;FeederCAN&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -1879,8 +1879,8 @@ All the files that are located in &lt;code&gt;deploy/runtime/k3d/volume&lt;/code
 &lt;p&gt;&lt;strong&gt;Scripting:&lt;/strong&gt; The tasks itself are executing scripts that are located in &lt;code&gt;.vscode/scripts&lt;/code&gt;. These scripts download the specified version of the runtime components and execute them along with Dapr. The same mechanism can be used to register additional services or prerequisites by adding new task definitions in the &lt;code&gt;tasks.json&lt;/code&gt; file.&lt;/p&gt;
 &lt;h2 id=&#34;change-version-of-runtime-services&#34;&gt;Change version of runtime services&lt;/h2&gt;
 &lt;p&gt;The version for the runtime services is defined in the file &lt;a href=&#34;https://github.com/eclipse-velocitas/vehicle-app-python-template/blob/main/prerequisite_settings.json&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;./prerequisite_settings.json&lt;/code&gt;&lt;/a&gt;. If you want to update the version, change it within the file and re-run the runtime services by restarting the tasks or the script.&lt;/p&gt;
-&lt;h2 id=&#34;using-vehicle-databroker-cli&#34;&gt;Using Vehicle Databroker CLI&lt;/h2&gt;
-&lt;p&gt;A CLI tool is provided for the interact with a running instance of the Vehicle Data Broker. It can be started by running the task &lt;code&gt;run-vehicledatabroker-cli&lt;/code&gt;(by pressing &lt;em&gt;F1&lt;/em&gt;, type &lt;em&gt;Run Task&lt;/em&gt; followed by &lt;code&gt;run-vehicledatabroker-cli&lt;/code&gt;). The &lt;em&gt;Vehicle Data Broker&lt;/em&gt; needs to be running for you to be able to use the tool.&lt;/p&gt;
+&lt;h2 id=&#34;using-kuksa-data-broker-cli&#34;&gt;Using KUKSA Data Broker CLI&lt;/h2&gt;
+&lt;p&gt;A CLI tool is provided for the interact with a running instance of the KUKSA Data Broker. It can be started by running the task &lt;code&gt;run-vehicledatabroker-cli&lt;/code&gt;(by pressing &lt;em&gt;F1&lt;/em&gt;, type &lt;em&gt;Run Task&lt;/em&gt; followed by &lt;code&gt;run-vehicledatabroker-cli&lt;/code&gt;). The &lt;em&gt;KUKSA Data Broker&lt;/em&gt; needs to be running for you to be able to use the tool.&lt;/p&gt;
 &lt;h2 id=&#34;integrating-a-new-service-into-visual-studio-code-task&#34;&gt;Integrating a new service into Visual Studio Code Task&lt;/h2&gt;
 &lt;p&gt;Integration of a new service can be done by duplicating one of the existing tasks.&lt;/p&gt;
 &lt;ul&gt;

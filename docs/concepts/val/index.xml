@@ -392,7 +392,7 @@ The existing VSC definitions shall preferably be extended with comments so that 
 &lt;li&gt;&lt;a href=&#34;#connection-status-with-dapr&#34;&gt;Connection status with Dapr&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#interaction-with-the-vehicle-data-broker-optional&#34;&gt;Interaction with the vehicle data broker (optional)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#interaction-with-the-kuksa-data-broker-optional&#34;&gt;Interaction with the KUKSA Data Broker (optional)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#next-steps&#34;&gt;Next steps&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#vehicle-apps-sdk-documentation&#34;&gt;Vehicle Apps SDK documentation&lt;/a&gt;&lt;/li&gt;
@@ -412,7 +412,7 @@ The existing VSC definitions shall preferably be extended with comments so that 
 &lt;li&gt;Implement the service&lt;/li&gt;
 &lt;li&gt;Add support for &lt;a href=&#34;https://dapr.io&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Dapr&lt;/a&gt; middleware&lt;/li&gt;
 &lt;li&gt;(optional) Implement simulation&lt;/li&gt;
-&lt;li&gt;(optional) Interaction with the vehicle data broker&lt;/li&gt;
+&lt;li&gt;(optional) Interaction with the KUKSA data broker&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;define-a-service-interface&#34;&gt;Define a service interface&lt;/h2&gt;
 &lt;h3 id=&#34;semantic-model&#34;&gt;Semantic model&lt;/h3&gt;
@@ -444,7 +444,7 @@ The existing VSC definitions shall preferably be extended with comments so that 
 &lt;li&gt;might be implemented vehicle- or project-specific&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;connection-status&#34;&gt;Connection status&lt;/h3&gt;
-&lt;p&gt;To be able to detect connectivity problems users of a gRPC service, e.g., for &lt;a href=&#34;#interaction-with-the-vehicle-data-broker-optional&#34;&gt; feeding data to the data broker&lt;/a&gt;, shall preferably monitor the gRPC connection state, see: &lt;a href=&#34;https://grpc.github.io/grpc/core/md_doc_connectivity-semantics-and-api.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;gRPC Connectivity Semantics and API &lt;/a&gt;.
+&lt;p&gt;To be able to detect connectivity problems users of a gRPC service, e.g., for &lt;a href=&#34;#interaction-with-the-kuksa-data-broker-optional&#34;&gt; feeding data to the data broker&lt;/a&gt;, shall preferably monitor the gRPC connection state, see: &lt;a href=&#34;https://grpc.github.io/grpc/core/md_doc_connectivity-semantics-and-api.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;gRPC Connectivity Semantics and API &lt;/a&gt;.
 This can be used to report or log errors if the connection behaves differently than expected.&lt;/p&gt;
 &lt;h2 id=&#34;add-dapr-support-to-the-vehicle-service&#34;&gt;Add Dapr support to the vehicle service&lt;/h2&gt;
 &lt;p&gt;You can use the gRPC proxying feature of Dapr, which allows you to use custom *.proto files/ interfaces instead of the predefined Dapr gRPC interfaces. More can be read at &lt;a href=&#34;https://docs.dapr.io/developing-applications/building-blocks/service-invocation/howto-invoke-services-grpc/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How-To: Invoke services using gRPC&lt;/a&gt;.&lt;/p&gt;
@@ -472,7 +472,7 @@ Dapr gRPC proxying is only allowed AFTER the Dapr sidecar is fully initialized. 
 &lt;ol&gt;
 &lt;li&gt;Create a gRPC Server and listen&lt;/li&gt;
 &lt;li&gt;Wait for the sidecar (e.g., poll health endpoint or sleep )&lt;/li&gt;
-&lt;li&gt;Execute gRPC proxying calls (e.g., against Vehicle Data Broker)&lt;/li&gt;
+&lt;li&gt;Execute gRPC proxying calls (e.g., against KUKSA Data Broker)&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Example: A callback for the connectivity state in conjugation with retry to call the server:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#000&#34;&gt;channel&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;grpc&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;insecure_channel&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;databroker_address&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
@@ -507,11 +507,11 @@ Dapr gRPC proxying is only allowed AFTER the Dapr sidecar is fully initialized. 
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#3465a4&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;_connected&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;False&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#3465a4&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;_registered&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;False&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If the Dapr side car is ready to forward, communication can be checked with the &lt;a href=&#34;https://grpc.github.io/grpc/core/md_doc_health-checking.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GRPC Health Checking Protocol &lt;/a&gt;, see also &lt;a href=&#34;https://grpc.github.io/grpc/python/grpc_health_checking.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Python gRPC Health Checking&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;interaction-with-the-vehicle-data-broker-optional&#34;&gt;Interaction with the vehicle data broker (optional)&lt;/h2&gt;
-&lt;p&gt;Use the &lt;a href=&#34;https://github.com/eclipse/kuksa.val/tree/master/kuksa_databroker/proto&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;interface description of the vehicle data broker (*.proto files)&lt;/a&gt; to publish data to the vehicle data broker. In the &lt;code&gt;collector.proto&lt;/code&gt; you find methods to&lt;/p&gt;
+&lt;h2 id=&#34;interaction-with-the-kuksa-data-broker-optional&#34;&gt;Interaction with the KUKSA Data Broker (optional)&lt;/h2&gt;
+&lt;p&gt;Use the &lt;a href=&#34;https://github.com/eclipse/kuksa.val/tree/master/kuksa_databroker/proto&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;interface description of the KUKSA data broker (*.proto files)&lt;/a&gt; to publish data to the data broker. In the &lt;code&gt;collector.proto&lt;/code&gt; you find methods to&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;register datapoints &lt;code&gt;RegisterDatapoints&lt;/code&gt;, afterwards you can&lt;/li&gt;
-&lt;li&gt;feed data via single calls &lt;code&gt;UpdateDatapoints&lt;/code&gt; or in a stream manner &lt;code&gt;StreamDatapoints&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;feed data via single calls &lt;code&gt;UpdateDatapoints&lt;/code&gt; or in a stream manner &lt;code&gt;StreamDatapoints&lt;/code&gt;.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;See the *.proto files for a detailed description.&lt;/p&gt;
 &lt;h2 id=&#34;next-steps&#34;&gt;Next steps&lt;/h2&gt;

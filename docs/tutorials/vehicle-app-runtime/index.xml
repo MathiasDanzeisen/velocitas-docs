@@ -30,7 +30,7 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;K3D - Install prerequisites&lt;/code&gt;: Install prerequisite components K3D, Helm, KubeCTL and Dapr without configuring them.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;K3D - Configure control plane&lt;/code&gt;: Creates a local container registry used by K3D as well as an K3D cluster with Dapr enabled.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;K3D - Deploy runtime&lt;/code&gt;: Deploys the runtime components (like Vehicle Data Broker, Seat Service, &amp;hellip;) within the K3D cluster.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;K3D - Deploy runtime&lt;/code&gt;: Deploys the runtime components (like KUKSA Data Broker, Seat Service, &amp;hellip;) within the K3D cluster.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;K3D - Build SeatAdjusterApp&lt;/code&gt;: Builds the SeatAdjusterApp and pushes it to the local K3D registry.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;K3D - Deploy SeatAdjusterApp&lt;/code&gt;: Builds and deploys the SeatAdjusterApp via Helm to the K3D cluster.&lt;/li&gt;
 &lt;/ul&gt;
@@ -47,7 +47,7 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;K3D is configured so that &lt;em&gt;Mosquitto&lt;/em&gt; and the &lt;em&gt;Vehicle Data Broker&lt;/em&gt; can be reached from outside the container over the ports &lt;code&gt;31883&lt;/code&gt; (Mosquitto) and &lt;code&gt;30555&lt;/code&gt;(Vehicle Data Broker). The test runner, that is running outside of the cluster, can interact with these services over those ports.&lt;/p&gt;
+&lt;p&gt;K3D is configured so that &lt;em&gt;Mosquitto&lt;/em&gt; and the &lt;em&gt;KUKSA Data Broker&lt;/em&gt; can be reached from outside the container over the ports &lt;code&gt;31883&lt;/code&gt; (Mosquitto) and &lt;code&gt;30555&lt;/code&gt;(KUKSA Data Broker). The test runner, that is running outside of the cluster, can interact with these services over those ports.&lt;/p&gt;
 &lt;p&gt;To check the status of your K3D instance (running pods, containers, logs, &amp;hellip;) you can either use the &lt;code&gt;kubectl&lt;/code&gt; utility or start &lt;em&gt;K9s&lt;/em&gt; (after running the task &lt;code&gt;K3D - Install tooling&lt;/code&gt; once) in a terminal window to have a UI for interacting with the cluster.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Run as Bundle:&lt;/strong&gt; To orchestrate these tasks, a task called &lt;code&gt;K3D - Deploy SeatAdjusterApp&lt;/code&gt; is available. This task runs the other tasks in the correct order. You can run this task by clicking &lt;code&gt;F1&lt;/code&gt; and choose &lt;code&gt;Tasks: Run task&lt;/code&gt;, then select &lt;code&gt;K3D - Deploy SeatAdjusterApp&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Tasks Management:&lt;/strong&gt; Visual Studio Code offers various other commands concerning tasks like Start/Terminate/Restart/&amp;hellip; You can access them by pressing F1 and typing &lt;code&gt;task&lt;/code&gt;. A list with available task commands will appear.&lt;/p&gt;
@@ -85,12 +85,12 @@ All the files that are located in &lt;code&gt;deploy/runtime/k3d/volume&lt;/code
         
         
         &lt;h2 id=&#34;using-tasks-in-visual-studio-code&#34;&gt;Using tasks in Visual Studio Code&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Overview:&lt;/strong&gt; If you are developing in Visual Studio Code, the runtime components (like &lt;em&gt;Vehicle Data Broker&lt;/em&gt; or &lt;em&gt;Vehicle Services&lt;/em&gt;) are available for local execution as &lt;em&gt;Tasks&lt;/em&gt;, a feature of the Visual Studio Code. Additional information on tasks can be found &lt;a href=&#34;https://code.visualstudio.com/docs/editor/tasks&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Overview:&lt;/strong&gt; If you are developing in Visual Studio Code, the runtime components (like &lt;em&gt;KUKSA Data Broker&lt;/em&gt; or &lt;em&gt;Vehicle Services&lt;/em&gt;) are available for local execution as &lt;em&gt;Tasks&lt;/em&gt;, a feature of the Visual Studio Code. Additional information on tasks can be found &lt;a href=&#34;https://code.visualstudio.com/docs/editor/tasks&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Quick Start:&lt;/strong&gt; Each component has a task that is defined in &lt;em&gt;.vscode/tasks.json&lt;/em&gt;:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Dapr (&lt;code&gt;Local - Ensure Dapr&lt;/code&gt;): installs Dapr CLI and initializes Dapr if required&lt;/li&gt;
 &lt;li&gt;Mosquitto (&lt;code&gt;Local - Mosquitto&lt;/code&gt;): runs &lt;em&gt;Mosquitto&lt;/em&gt; as a container (&lt;code&gt;docker run&lt;/code&gt;)&lt;/li&gt;
-&lt;li&gt;Vehicle Data Broker (&lt;code&gt;Local - VehicleDataBroker&lt;/code&gt;): downloads and runs &lt;em&gt;Vehicle Data Broker&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;KUKSA Data Broker (&lt;code&gt;Local - VehicleDataBroker&lt;/code&gt;): downloads and runs &lt;em&gt;KUKSA Data Broker&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;(Optional) Seat Service (&lt;code&gt;Local - SeatService&lt;/code&gt;): downloads and runs &lt;em&gt;Seat Service&lt;/em&gt;, an example &lt;code&gt;Vehicle Service&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;(Optional) Feeder Can (&lt;code&gt;Local - FeederCan&lt;/code&gt;): downloads and runs &lt;em&gt;FeederCAN&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -100,8 +100,8 @@ All the files that are located in &lt;code&gt;deploy/runtime/k3d/volume&lt;/code
 &lt;p&gt;&lt;strong&gt;Scripting:&lt;/strong&gt; The tasks itself are executing scripts that are located in &lt;code&gt;.vscode/scripts&lt;/code&gt;. These scripts download the specified version of the runtime components and execute them along with Dapr. The same mechanism can be used to register additional services or prerequisites by adding new task definitions in the &lt;code&gt;tasks.json&lt;/code&gt; file.&lt;/p&gt;
 &lt;h2 id=&#34;change-version-of-runtime-services&#34;&gt;Change version of runtime services&lt;/h2&gt;
 &lt;p&gt;The version for the runtime services is defined in the file &lt;a href=&#34;https://github.com/eclipse-velocitas/vehicle-app-python-template/blob/main/prerequisite_settings.json&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;./prerequisite_settings.json&lt;/code&gt;&lt;/a&gt;. If you want to update the version, change it within the file and re-run the runtime services by restarting the tasks or the script.&lt;/p&gt;
-&lt;h2 id=&#34;using-vehicle-databroker-cli&#34;&gt;Using Vehicle Databroker CLI&lt;/h2&gt;
-&lt;p&gt;A CLI tool is provided for the interact with a running instance of the Vehicle Data Broker. It can be started by running the task &lt;code&gt;run-vehicledatabroker-cli&lt;/code&gt;(by pressing &lt;em&gt;F1&lt;/em&gt;, type &lt;em&gt;Run Task&lt;/em&gt; followed by &lt;code&gt;run-vehicledatabroker-cli&lt;/code&gt;). The &lt;em&gt;Vehicle Data Broker&lt;/em&gt; needs to be running for you to be able to use the tool.&lt;/p&gt;
+&lt;h2 id=&#34;using-kuksa-data-broker-cli&#34;&gt;Using KUKSA Data Broker CLI&lt;/h2&gt;
+&lt;p&gt;A CLI tool is provided for the interact with a running instance of the KUKSA Data Broker. It can be started by running the task &lt;code&gt;run-vehicledatabroker-cli&lt;/code&gt;(by pressing &lt;em&gt;F1&lt;/em&gt;, type &lt;em&gt;Run Task&lt;/em&gt; followed by &lt;code&gt;run-vehicledatabroker-cli&lt;/code&gt;). The &lt;em&gt;KUKSA Data Broker&lt;/em&gt; needs to be running for you to be able to use the tool.&lt;/p&gt;
 &lt;h2 id=&#34;integrating-a-new-service-into-visual-studio-code-task&#34;&gt;Integrating a new service into Visual Studio Code Task&lt;/h2&gt;
 &lt;p&gt;Integration of a new service can be done by duplicating one of the existing tasks.&lt;/p&gt;
 &lt;ul&gt;

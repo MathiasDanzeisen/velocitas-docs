@@ -80,8 +80,8 @@
 
 &lt;ol&gt;
 &lt;li&gt;If the seat position will be changed by the driver, the new seat position will be sent to the &lt;strong&gt;Seat Service&lt;/strong&gt; via CAN.&lt;/li&gt;
-&lt;li&gt;The &lt;strong&gt;Seat Service&lt;/strong&gt; streams the seat position via gRPC to the &lt;strong&gt;Vehicle Data Broker&lt;/strong&gt; since it was registered beforehand.&lt;/li&gt;
-&lt;li&gt;The &lt;strong&gt;Seat Adjuster Vehicle App&lt;/strong&gt; that subscribed to the seat position receives the new seat position from the &lt;strong&gt;Vehicle Data Broker&lt;/strong&gt; as a result.&lt;/li&gt;
+&lt;li&gt;The &lt;strong&gt;Seat Service&lt;/strong&gt; streams the seat position via gRPC to the &lt;strong&gt;KUKSA Data Broker&lt;/strong&gt; since it was registered beforehand.&lt;/li&gt;
+&lt;li&gt;The &lt;strong&gt;Seat Adjuster Vehicle App&lt;/strong&gt; that subscribed to the seat position receives the new seat position from the &lt;strong&gt;KUKSA Data Broker&lt;/strong&gt; as a result.&lt;/li&gt;
 &lt;li&gt;The &lt;strong&gt;Seat Adjuster Vehicle App&lt;/strong&gt; publishes this on topic &lt;code&gt;seatadjuster/currentPosition&lt;/code&gt; with the payload:
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;position&amp;#34;&lt;/span&gt;: 350&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
@@ -118,8 +118,16 @@
 &lt;td&gt;Provides basis functionality to write an SDK to allow access to vehicle data points and method. This includes publishing &amp;amp; subscribe messaging, talent abstraction, vehicle data model ontology and function-based query &amp;amp; rule support.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://github.com/eclipse/kuksa.val&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;swdc-os-vehicleapi&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;Provides a vehicle abstraction layer (val) including Vehicle Data Broker, an exemplary CAN Data Feeder as well as a Seat Vehicle Service. The Vehicle Data Broker provides data points available in the vehicle to the Vehicle Apps semantically aligned to the &lt;a href=&#34;https://covesa.github.io/vehicle_signal_specification/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Vehicle Signal Specification (VSS)&lt;/a&gt;. The CAN Data Feeder is an exemplary implementation that reads in data from the vehicle&amp;rsquo;s &lt;a href=&#34;https://en.wikipedia.org/wiki/CAN_bus&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CAN bus&lt;/a&gt;, transforms it according to the VSS and feeds it into the Data Broker. The Seat Vehicle Service is an exemplary implementation that illustrates how to interact with in-vehicle components and services via an unified access that is semantically described in the &lt;a href=&#34;https://github.com/COVESA/vehicle_service_catalog&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Vehicle Service Catalog (VSC)&lt;/a&gt;.&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/eclipse/kuksa.val/tree/master/kuksa_databroker&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;kuksa.val&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Is a part of the Vehicle Abstraction Layer (VAL) of the [Eclipse KUKSA project]https://www.eclipse.org/kuksa/) and provides the KUKSA Data Broker. The KUKSA Data Broker offers data points available in the vehicle to the Vehicle Apps semantically aligned to a data model like the &lt;a href=&#34;https://covesa.github.io/vehicle_signal_specification/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Vehicle Signal Specification (VSS)&lt;/a&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/eclipse/kuksa.val.feeders/tree/main/dbc2val&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;kuksa.val.feeders&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;The DBC CAN Feeder is a generic data feeder that reads data from the vehicle&amp;rsquo;s &lt;a href=&#34;https://en.wikipedia.org/wiki/CAN_bus&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CAN bus&lt;/a&gt; defined by a DBC file, maps them to a set of data points (e.g. according to the VSS) and feeds it into the Data Broker.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/eclipse/kuksa.val.services&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;kuksa.val.services&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Provides exemplary vehicle services and respective implementations that illustrates how to interact with in-vehicle components and services via an unified access that is semantically described e.g. in the &lt;a href=&#34;https://github.com/COVESA/vehicle_service_catalog&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Vehicle Service Catalog (VSC)&lt;/a&gt;.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;a href=&#34;https://github.com/eclipse-velocitas/release-documentation-action&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;release-documentation-action&lt;/a&gt;&lt;/td&gt;
