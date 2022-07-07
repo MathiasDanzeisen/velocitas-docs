@@ -39,8 +39,8 @@
 
 
 
-<link rel="preload" href="/velocitas-docs/scss/main.min.2c20f31729dbd3449d3dabb50e7b67aa5716b3bbd3274111b3e50be5933b81b3.css" as="style">
-<link href="/velocitas-docs/scss/main.min.2c20f31729dbd3449d3dabb50e7b67aa5716b3bbd3274111b3e50be5933b81b3.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/velocitas-docs/scss/main.min.5ea4f0f0731b41907d7ae85211533b9d62ee0b22d99a20db6cac3cec3dab0578.css" as="style">
+<link href="/velocitas-docs/scss/main.min.5ea4f0f0731b41907d7ae85211533b9d62ee0b22d99a20db6cac3cec3dab0578.css" rel="stylesheet" integrity="">
 
 <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -119,7 +119,7 @@ if (!doNotTrack) {
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/velocitas-docs/offline-search-index.857f226b196844d6a188d5d3f134ca46.json"
+  data-offline-search-index-json-src="/velocitas-docs/offline-search-index.120ff9b486896e8b544f00449b14bd7b.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -703,8 +703,7 @@ It communicates with the Hardware Abstraction to execute the underlying services
 <p>The KUKSA.VAL is providing examples how such kind of vehicle services could be built-up in the <a href="https://github.com/eclipse/kuksa.val.services/" target="_blank" rel="noopener">kuksa.val.services repository</a>.</p>
 <h3 id="hardware-abstraction">Hardware Abstraction</h3>
 <p>Data feeders rely on hardware abstraction. Hardware abstraction is project/platform specific.
-The reference implementation relies on [SocketCAN]<a href="https://github.com/eclipse/kuksa.val/tree/master/kuksa_feeders" target="_blank" rel="noopener">(https://github.com/eclipse/kuksa.val/tree/master/kuksa_feeders</a>) and
-<a href="https://github.com/eclipse/kuksa.val/tree/master/kuksa_feeders" target="_blank" rel="noopener">vxcan</a>.
+The reference implementation relies on <strong>SocketCAN</strong> and <strong>vxcan</strong>, see <a href="https://github.com/eclipse/kuksa.val.feeders/tree/main/dbc2val" target="_blank" rel="noopener">https://github.com/eclipse/kuksa.val.feeders/tree/main/dbc2val</a>.
 The hardware abstraction may offer replaying (e.g., CAN) data from a file (can dump file) when the respective data source (e.g., CAN) is not available.</p>
 <h2 id="information-flow">Information Flow</h2>
 <p>The vehicle abstraction layer offers an information flow between vehicle networks and vehicle services.

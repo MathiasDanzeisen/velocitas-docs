@@ -415,8 +415,7 @@ It communicates with the Hardware Abstraction to execute the underlying services
 &lt;p&gt;The KUKSA.VAL is providing examples how such kind of vehicle services could be built-up in the &lt;a href=&#34;https://github.com/eclipse/kuksa.val.services/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;kuksa.val.services repository&lt;/a&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;hardware-abstraction&#34;&gt;Hardware Abstraction&lt;/h3&gt;
 &lt;p&gt;Data feeders rely on hardware abstraction. Hardware abstraction is project/platform specific.
-The reference implementation relies on [SocketCAN]&lt;a href=&#34;https://github.com/eclipse/kuksa.val/tree/master/kuksa_feeders&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;(https://github.com/eclipse/kuksa.val/tree/master/kuksa_feeders&lt;/a&gt;) and
-&lt;a href=&#34;https://github.com/eclipse/kuksa.val/tree/master/kuksa_feeders&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;vxcan&lt;/a&gt;.
+The reference implementation relies on &lt;strong&gt;SocketCAN&lt;/strong&gt; and &lt;strong&gt;vxcan&lt;/strong&gt;, see &lt;a href=&#34;https://github.com/eclipse/kuksa.val.feeders/tree/main/dbc2val&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/eclipse/kuksa.val.feeders/tree/main/dbc2val&lt;/a&gt;.
 The hardware abstraction may offer replaying (e.g., CAN) data from a file (can dump file) when the respective data source (e.g., CAN) is not available.&lt;/p&gt;
 &lt;h2 id=&#34;information-flow&#34;&gt;Information Flow&lt;/h2&gt;
 &lt;p&gt;The vehicle abstraction layer offers an information flow between vehicle networks and vehicle services.

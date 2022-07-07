@@ -119,7 +119,7 @@
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;a href=&#34;https://github.com/eclipse/kuksa.val/tree/master/kuksa_databroker&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;kuksa.val&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;Is a part of the Vehicle Abstraction Layer (VAL) of the [Eclipse KUKSA project]https://www.eclipse.org/kuksa/) and provides the KUKSA Data Broker. The KUKSA Data Broker offers data points available in the vehicle to the Vehicle Apps semantically aligned to a data model like the &lt;a href=&#34;https://covesa.github.io/vehicle_signal_specification/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Vehicle Signal Specification (VSS)&lt;/a&gt;.&lt;/td&gt;
+&lt;td&gt;Is a part of the Vehicle Abstraction Layer (VAL) of the &lt;a href=&#34;https://www.eclipse.org/kuksa/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Eclipse KUKSA project&lt;/a&gt; and provides the KUKSA Data Broker. The KUKSA Data Broker offers data points available in the vehicle to the Vehicle Apps semantically aligned to a data model like the &lt;a href=&#34;https://covesa.github.io/vehicle_signal_specification/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Vehicle Signal Specification (VSS)&lt;/a&gt;.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;a href=&#34;https://github.com/eclipse/kuksa.val.feeders/tree/main/dbc2val&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;kuksa.val.feeders&lt;/a&gt;&lt;/td&gt;
