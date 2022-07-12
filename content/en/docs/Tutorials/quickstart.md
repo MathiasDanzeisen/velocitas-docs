@@ -203,7 +203,7 @@ Let's send a message to your Vehicle App using the mqtt broker that is running i
 
 ## Trigger your Github Workflows
 
-GitHub workflows are used to build the container image for the Vehicle App, run unit and integration tests, collect the test results and create a release documentation and publish the Vehicle App. A detailed description of the workflow you can find [here](https://github.com/eclipse-velocitas/velocitas-docs/blob/main/docs/vehicle_app_releases.md).
+GitHub workflows are used to build the container image for the Vehicle App, run unit and integration tests, collect the test results and create a release documentation and publish the Vehicle App. A detailed description of the workflow you can find [here](/content/en/docs/Concepts/vehicle_app_releases.md).
 
 ### Prerequisites
 
